@@ -1,31 +1,114 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { toJpeg, toPng } from 'html-to-image';
+import './App.css';
+import { useRef, useState } from 'react';
+import StrengthWithRank from './components/StrengthWithRank';
 
 function App() {
-	const [count, setCount] = useState(0);
-
-	return (
-		<div className="App">
-			<div>
-				<a href="https://reactjs.org" target="_blank" rel="noreferrer">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Rspack + React + TypeScript</h1>
-			<div className="card">
-				<button type="button" onClick={() => setCount(count => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Rspack and React logos to learn more
-			</p>
-		</div>
-	);
+  const [image, setImage] = useState<string>();
+  const canvasRef = useRef<HTMLDivElement>(null);
+  return (
+    <>
+      {image == null && (
+        <input
+          type="file"
+          accept="image/*"
+          onChange={async (event) => {
+            const file = event.target.files?.item(0);
+            if (file != null) {
+              const arrayBuffer = await file.arrayBuffer();
+              const blob = new Blob([arrayBuffer]);
+              const imageUrl = URL.createObjectURL(blob);
+              setImage(imageUrl);
+            }
+          }}
+        />
+      )}
+      {image && (
+        <>
+          <button
+            type="button"
+            onClick={() => {
+              setImage(undefined);
+            }}
+          >
+            Pick another image
+          </button>
+          <button
+            type="button"
+            onClick={async () => {
+              if (canvasRef.current) {
+                const dataUrl = await toJpeg(canvasRef.current, {
+                  quality: 0.8,
+                  width: 512,
+                  height: 512,
+                  pixelRatio: 1,
+                });
+                const link = document.createElement('a');
+                link.download = 'profile.jpg';
+                link.href = dataUrl;
+                link.click();
+              }
+            }}
+          >
+            Save
+          </button>
+          <div className="canvas" ref={canvasRef}>
+            <div className="image">
+              <img src={image} alt="profile-pic" />
+            </div>
+            <StrengthWithRank
+              className="top left"
+              color="blue"
+              rank={1}
+              strength="Relator"
+            />
+            <StrengthWithRank
+              className="top right"
+              color="purple"
+              rank={2}
+              strength="Belief"
+            />
+            <StrengthWithRank
+              className="vertical top right"
+              color="blue"
+              rank={3}
+              strength="Adaptability"
+            />
+            <StrengthWithRank
+              className="vertical bottom right"
+              color="orange"
+              rank={4}
+              strength="Command"
+            />
+            <StrengthWithRank
+              className="bottom right"
+              color="blue"
+              rank={5}
+              strength="Empathy"
+            />
+            <StrengthWithRank
+              className="bottom left"
+              color="blue"
+              rank={6}
+              strength="Individualization"
+            />
+            <StrengthWithRank
+              className="vertical bottom left"
+              color="green"
+              rank={7}
+              strength="Input"
+            />
+            <StrengthWithRank
+              className="vertical top left"
+              color="purple"
+              rank={8}
+              strength="Responsibility"
+            />
+          </div>
+        </>
+      )}
+    </>
+  );
 }
 
 export default App;

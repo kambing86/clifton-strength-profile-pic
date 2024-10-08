@@ -5,37 +5,82 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.canvas {
+  width: 512px;
+  height: 512px;
+  text-transform: uppercase;
+  display: flex;
+  font-size: 22px;
+  line-height: 22px;
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.strength {
+  position: absolute;
+  min-width: 50%;
+
+  &.vertical {
+    min-height: 50%;
+    min-width: unset;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
   }
-  to {
-    transform: rotate(360deg);
+
+  > div {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a > .logo {
-    animation: logo-spin infinite 20s linear;
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 22px;
+  width: 468px;
+  height: 468px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
   }
 }
 
-.card {
-  padding: 2em;
+.left {
+  left: 0;
 }
 
-.read-the-docs {
-  color: #888;
+.right {
+  right: 0;
+}
+
+.green {
+  color: white;
+  background-color: green;
+}
+
+.blue {
+  color: white;
+  background-color: darkblue;
+}
+
+.purple {
+  color: white;
+  background-color: purple;
+}
+
+.orange {
+  color: black;
+  background-color: orange;
 }
