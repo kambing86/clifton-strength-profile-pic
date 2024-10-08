@@ -22,7 +22,7 @@
   &.vertical {
     min-height: 50%;
     min-width: unset;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     text-orientation: mixed;
   }
 
