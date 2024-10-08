@@ -26,6 +26,8 @@ jobs:
   deploy:
     needs: [test]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
