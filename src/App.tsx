@@ -1,7 +1,9 @@
-import { toJpeg, toPng } from 'html-to-image';
-import './App.css';
+import { toJpeg } from 'html-to-image';
 import { useRef, useState } from 'react';
+import InputModal from './components/InputModal';
 import StrengthWithRank from './components/StrengthWithRank';
+
+import './App.css';
 
 function App() {
   const [image, setImage] = useState<string>();
@@ -105,6 +107,7 @@ function App() {
               strength="Responsibility"
             />
           </div>
+          <InputModal />
         </>
       )}
     </>
