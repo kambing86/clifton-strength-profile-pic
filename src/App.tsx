@@ -27,6 +27,7 @@ function App() {
       )}
       {image && (
         <>
+          <div>Click on the strength to change it</div>
           <button
             type="button"
             onClick={() => {

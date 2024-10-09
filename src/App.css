@@ -16,6 +16,7 @@
 }
 
 .strength {
+  cursor: pointer;
   position: absolute;
   min-width: 50%;
 
