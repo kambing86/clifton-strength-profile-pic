@@ -4,6 +4,7 @@ import InputModal from './components/InputModal';
 import StrengthWithRank from './components/StrengthWithRank';
 
 import './App.css';
+import ImageInput from './components/ImageInput';
 
 function App() {
   const [image, setImage] = useState<string>();
@@ -11,19 +12,20 @@ function App() {
   return (
     <>
       {image == null && (
-        <input
-          type="file"
-          accept="image/*"
-          onChange={async (event) => {
-            const file = event.target.files?.item(0);
-            if (file != null) {
-              const arrayBuffer = await file.arrayBuffer();
-              const blob = new Blob([arrayBuffer]);
-              const imageUrl = URL.createObjectURL(blob);
-              setImage(imageUrl);
-            }
-          }}
-        />
+        // <input
+        //   type="file"
+        //   accept="image/*"
+        //   onChange={async (event) => {
+        //     const file = event.target.files?.item(0);
+        //     if (file != null) {
+        //       const arrayBuffer = await file.arrayBuffer();
+        //       const blob = new Blob([arrayBuffer]);
+        //       const imageUrl = URL.createObjectURL(blob);
+        //       setImage(imageUrl);
+        //     }
+        //   }}
+        // />
+        <ImageInput setImage={setImage} />
       )}
       {image && (
         <>
