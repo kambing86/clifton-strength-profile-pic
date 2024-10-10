@@ -1,7 +1,7 @@
 {
-  "name": "cliffton-strength-profile-pic",
+  "name": "clifton-strength-profile-pic",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.3.0",
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build",
     "check": "biome check --write",
