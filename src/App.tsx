@@ -11,22 +11,7 @@ function App() {
   const canvasRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      {image == null && (
-        // <input
-        //   type="file"
-        //   accept="image/*"
-        //   onChange={async (event) => {
-        //     const file = event.target.files?.item(0);
-        //     if (file != null) {
-        //       const arrayBuffer = await file.arrayBuffer();
-        //       const blob = new Blob([arrayBuffer]);
-        //       const imageUrl = URL.createObjectURL(blob);
-        //       setImage(imageUrl);
-        //     }
-        //   }}
-        // />
-        <ImageInput setImage={setImage} />
-      )}
+      {image == null && <ImageInput setImage={setImage} />}
       {image && (
         <>
           <div>Click on the strength to change it</div>

@@ -43,7 +43,7 @@ const ImageInput = ({ setImage }: Props) => {
                 const inputElem = document.getElementById(
                   'url-string',
                 ) as HTMLInputElement;
-                setImage(inputElem.value);
+                setImage(`//wsrv.nl/?url=${inputElem.value}`);
               }}
             >
               Confirm
